@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Odin Sign Up Form</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <!-- CONTAINER -->
+    <div class="container">
+      <!-- LEFT -->
+      <div class="left">
+	<!-- BACKGROUND -->
+	<div class="background">
+	  <img src="/images/image.png" alt="Odin Logo"/>
+	  <p class="logo">ODIN</p>
+	</div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="right">
+        <!-- TEXT -->
+        <div class="text">
+          <p>This is not a real online service! You know you need something like this in
+          your life to help you realize your deepest dreams.</p>
+          <p>Sign up <em>now</em> to get started.</p>
+          <p>You <em>know</em> you want to.</p>
+        </div>
+
+        <!-- FORM -->
+        <div class="card" role="region" aria-label="signup form">
+          <h3>Let's do this!</h3>
+          <form id="signup-form">
+            <div class="grid">	      
+              <!-- FIRST NAME -->
+              <div>
+                <label for="first">FIRST NAME</label>
+                <input type="text" id="first" name="first" required/>
+              </div>
+
+              <!-- LAST NAME -->
+              <div>
+                <label for="last">LAST NAME</label>
+                <input type="text" id="last" name="last" required/>
+              </div>
+
+              <!-- EMAIL -->
+              <div>
+                <label for="email">EMAIL</label>
+                <input type="email" id="email" name="email" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" title="Please enter a valid email address (e.g.: user@example.com)" required/>
+              </div>
+
+              <!-- PHONE NUMBER -->
+              <div>
+                <label for="phone">PHONE NUMBER</label>
+                <input type="tel" id="phone" name="phone" pattern="[\+]?[0-9\s\-\(\)]{10,}" title="Please enter a valid phone number (e.g.: 555-123-4567 or +1 (555) 123-4567)" required/>
+              </div>
+
+              <!-- PASSWORD -->
+              <div class="has-error">
+                <label for="pwd">PASSWORD</label>
+                <input type="password" id="pwd" name="pwd" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" title="Password must contain: at least 8 characters, 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character" required/>
+              </div>
+
+              <!-- CONFIRM PASSWORD -->
+              <div class="has-error">
+                <label for="pwd2">CONFIRM PASSWORD</label>
+                <input type="password" id="pwd2" name="pwd2" title="Please re-enter your password to confirm" required minlength="8"/>
+              </div>
+            </div>
+          </form>
+	</div>
+
+        <!-- SUBMISSION - MOVED INSIDE FORM -->
+        <div class="submission">
+          <button type="submit">Create Account</button>
+          <p>Already have an account? <a href="#">Log in</a></p>
+        </div>
+      </div>
+    </div>
+    
+    <script>
+      // Password confirmation validation
+      document.getElementById('signup-form').addEventListener('submit', function(e) {
+        const password = document.getElementById('pwd').value;
+        const confirmPassword = document.getElementById('pwd2').value;
+        
+        if (password !== confirmPassword) {
+          e.preventDefault();
+          alert('Passwords do not match!');
+          document.getElementById('pwd2').focus();
+        }
+      });
+    </script>
+  </body>
+</html>
